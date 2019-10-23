@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.br.CPF;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,21 +20,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Buyer implements Serializable{
+public class Boleto implements Serializable{
 
-	private static final long serialVersionUID = 4983565062155744281L;
-
+	private static final long serialVersionUID = 5876758140407296009L;
+	
+	public static final String NUMBER_EXAMPLE = "23790.50400 41991.022231 38008.109209 5 80530000019900";
+	
 	@Id
     @EqualsAndHashCode.Include
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="buyer_id")
+	@Column(name="boleto_id")
 	private Long id;
 	
-	@NotNull
-	private String name;
-	
-	private String email;
-	
-	@CPF
-	private String cpf;
+	@NotEmpty
+	private String number;
+
 }

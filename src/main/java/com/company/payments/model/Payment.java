@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -44,4 +45,24 @@ public class Payment implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "card_id", nullable = true)
 	private Card card;
+	
+	@Valid
+	@ManyToOne
+	@JoinColumn(name = "boleto_id", nullable = true)
+	private Boleto boleto;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private PaymentStatus status;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "client_id", nullable = false)
+	private Client client;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "buyer_id", nullable = false)
+	private Buyer buyer;	
+
 }

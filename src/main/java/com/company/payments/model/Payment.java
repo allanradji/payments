@@ -55,12 +55,10 @@ public class Payment implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private PaymentStatus status;
 	
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "client_id", nullable = false)
 	private Client client;
 	
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "buyer_id", nullable = false)
 	private Buyer buyer;	

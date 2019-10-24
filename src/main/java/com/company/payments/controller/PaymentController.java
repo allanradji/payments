@@ -1,17 +1,16 @@
 package com.company.payments.controller;
 
-import java.util.Optional;
+import javax.validation.Valid;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.payments.dto.PaymentDTO;
-import com.company.payments.model.Payment;
 import com.company.payments.service.PaymentService;
 
 import lombok.AllArgsConstructor;
@@ -21,23 +20,18 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PaymentController {
 
+	@Autowired
     private final PaymentService paymentService;
 
-    @GetMapping("/{id}")
-    public PaymentDTO findById(@PathVariable(name = "id", required = true) Long id) {
-        return convertToDTO(paymentService.findById(id));
-    }
+//    @GetMapping("/{id}")
+//    public PaymentDTO findById(@PathVariable(name = "id", required = true) Long id) {
+//        return convertToDTO(paymentService.findById(id));
+//    }
     
     @PostMapping
-    public PaymentDTO create(@RequestBody(required = true) PaymentDTO paymentDTO) {
-        return convertToDTO(paymentService.create(convertToPayment(paymentDTO)));
+    public ResponseEntity<PaymentDTO> create(@Valid @RequestBody PaymentDTO paymentDTO) {
+    	PaymentDTO paymentResponse = paymentService.create(paymentDTO);
+    	return ResponseEntity.status(HttpStatus.CREATED).body(paymentResponse);
     }
     
-    public PaymentDTO convertToDTO(Payment payment) {
-    	return PaymentDTO.builder().id(payment.getId()).build();
-    }
-    
-    public Payment convertToPayment(PaymentDTO paymentDTO) {
-    	return Payment.builder().id(paymentDTO.getId()).build();
-    }
 }

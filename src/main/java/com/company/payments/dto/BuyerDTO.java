@@ -17,7 +17,6 @@ public class BuyerDTO implements Serializable {
 
 	private static final long serialVersionUID = -4894197054897249477L;
 	
-	@JsonProperty("buyer_id")
     private Long id;
 	
 	private String name;

@@ -17,7 +17,6 @@ public class ClientDTO implements Serializable {
 
 	private static final long serialVersionUID = 3725230190309048692L;
 
-	@JsonProperty("client_id")
     private Long id;
 
 }

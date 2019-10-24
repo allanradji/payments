@@ -1,11 +1,12 @@
 package com.company.payments.service;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.company.payments.dto.PaymentDTO;
 import com.company.payments.exception.PaymentNotFoundException;
 import com.company.payments.model.Payment;
 import com.company.payments.repository.PaymentRepository;
@@ -25,8 +26,12 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public Payment create(Payment payment) {
-        return paymentRepository.save(payment);
+    public PaymentDTO create(PaymentDTO paymentDTO) {
+		
+    	Payment payment = new ModelMapper().map(paymentDTO, Payment.class);
+    	payment = paymentRepository.save(payment);
+    	
+    	return new ModelMapper().map(payment, PaymentDTO.class);
     }
     
 	@Override

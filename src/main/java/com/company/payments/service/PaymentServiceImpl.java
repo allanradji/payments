@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.company.payments.dto.PaymentDTO;
 import com.company.payments.exception.PaymentNotFoundException;
+import com.company.payments.model.Client;
 import com.company.payments.model.Payment;
 import com.company.payments.repository.PaymentRepository;
 
@@ -29,6 +30,10 @@ public class PaymentServiceImpl implements PaymentService{
     public PaymentDTO create(PaymentDTO paymentDTO) {
 		
     	Payment payment = new ModelMapper().map(paymentDTO, Payment.class);
+    	
+    	if(payment.getClient() == null)
+    		payment.setClient(new Client());
+    		
     	payment = paymentRepository.save(payment);
     	
     	return new ModelMapper().map(payment, PaymentDTO.class);

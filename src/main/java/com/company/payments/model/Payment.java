@@ -2,6 +2,7 @@ package com.company.payments.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -42,12 +43,12 @@ public class Payment implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private PaymentType type;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id", nullable = true)
 	private Card card;
 	
 	@Valid
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "boleto_id", nullable = true)
 	private Boleto boleto;
 	
@@ -55,11 +56,11 @@ public class Payment implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private PaymentStatus status;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "client_id", nullable = false)
 	private Client client;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "buyer_id", nullable = false)
 	private Buyer buyer;	
 

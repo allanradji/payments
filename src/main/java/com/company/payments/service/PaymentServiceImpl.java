@@ -20,29 +20,24 @@ import lombok.AllArgsConstructor;
 public class PaymentServiceImpl implements PaymentService{
 
     private final PaymentRepository paymentRepository;
-    
-    @Override
-    public List<Payment> findAll() {
-        return paymentRepository.findAll();
-    }
 
     @Override
     public PaymentDTO create(PaymentDTO paymentDTO) {
-		
     	Payment payment = new ModelMapper().map(paymentDTO, Payment.class);
     	
     	if(payment.getClient() == null)
     		payment.setClient(new Client());
     		
-    	payment = paymentRepository.save(payment);
-    	
+    	payment = paymentRepository.save(payment);	
     	return new ModelMapper().map(payment, PaymentDTO.class);
     }
     
 	@Override
-	public Payment findById(long id) {
-        return paymentRepository.findById(id)
+	public PaymentDTO findById(long id) {
+       Payment payment = paymentRepository.findById(id)
                                 .orElseThrow(() -> new PaymentNotFoundException(id));
+
+       return new ModelMapper().map(payment,PaymentDTO.class);
     }
 
 }

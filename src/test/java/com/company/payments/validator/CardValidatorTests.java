@@ -5,11 +5,9 @@ import java.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.company.payments.exception.ResourceException;
-import com.company.payments.message.SourceMessage;
 import com.company.payments.model.Card;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -19,9 +17,6 @@ public class CardValidatorTests {
 
 	@InjectMocks
     private CardValidator cardValidator;
-
-    @Mock
-    private SourceMessage messageSource;
     
     @Test(expected = ResourceException.class)
     public void testCardWithExpirationDateInvalid() {

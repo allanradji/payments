@@ -18,6 +18,7 @@ public class CardValidator {
 	private final int FIRST_DAY_OF_A_MONTH = 1;
 	
 	public void validateCreditCard(Card card) {
+		validateCardIsEmpty(card);
 		validateNumberCard(card);
 		validateExpirationDateCard(card);
 		validateCvvNumberCard(card);
@@ -44,6 +45,11 @@ public class CardValidator {
 		if(!card.getHolderName().matches(NAME_PATTERN))
 			throw new ResourceException(HttpStatus.NOT_ACCEPTABLE, "card.holder.name.invalid");
 	}
+	
+	public void validateCardIsEmpty(Card card) {
+		if(card == null)
+			throw new ResourceException(HttpStatus.NOT_ACCEPTABLE, "card.empty");
+	}
 
 	private boolean luhnCheck(String cardNumber) {
 		int s1 = 0, s2 = 0;
@@ -58,6 +64,5 @@ public class CardValidator {
 		}
 		return (s1 + s2) % 10 == 0;
 	}
-	
 	
 }

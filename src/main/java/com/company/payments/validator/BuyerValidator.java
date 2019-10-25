@@ -1,13 +1,10 @@
 package com.company.payments.validator;
 
-import java.time.LocalDate;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.company.payments.exception.ResourceException;
 import com.company.payments.model.Buyer;
-import com.company.payments.model.Card;
 
 import lombok.AllArgsConstructor;
 

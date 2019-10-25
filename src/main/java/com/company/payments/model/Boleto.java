@@ -24,8 +24,6 @@ public class Boleto implements Serializable{
 
 	private static final long serialVersionUID = 5876758140407296009L;
 	
-	public static final String NUMBER_EXAMPLE = "23790.50400 41991.022231 38008.109209 5 80530000019900";
-	
 	@Id
     @EqualsAndHashCode.Include
 	@GeneratedValue(strategy=GenerationType.AUTO)

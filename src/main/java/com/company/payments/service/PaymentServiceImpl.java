@@ -12,6 +12,7 @@ import com.company.payments.model.Client;
 import com.company.payments.model.Payment;
 import com.company.payments.model.PaymentType;
 import com.company.payments.repository.PaymentRepository;
+import com.company.payments.transaction.PaymentTransactionFactory;
 import com.company.payments.validator.BuyerValidator;
 import com.company.payments.validator.CardValidator;
 import com.company.payments.validator.PaymentValidator;
@@ -26,24 +27,15 @@ public class PaymentServiceImpl implements PaymentService{
     private final PaymentRepository paymentRepository;
 
     @Override
-    public PaymentDTO create(PaymentDTO paymentDTO) {
+    public String create(PaymentDTO paymentDTO) {
     	Payment payment = new ModelMapper().map(paymentDTO, Payment.class);
+    	String transactionResponse = PaymentTransactionFactory
+				.getTransaction(payment.getType())
+				.doTransaction(payment);
     	
-    	if(payment.getClient() == null)
-    		payment.setClient(new Client());
+    	paymentRepository.save(payment);
     	
-    	PaymentValidator paymentValidator = new PaymentValidator();
-    	CardValidator cardValidator = new CardValidator();
-    	BuyerValidator buyerValidator = new BuyerValidator();
-    	
-    	if(payment.getType().equals(PaymentType.CREDIT_CARD))
-    		
-    		paymentValidator.validatePayment(payment);
-    		cardValidator.validateCreditCard(payment.getCard());
-    		buyerValidator.validateBuyer(payment.getBuyer());
-    		
-    	payment = paymentRepository.save(payment);	
-    	return new ModelMapper().map(payment, PaymentDTO.class);
+    	return transactionResponse;
     }
     
 	@Override

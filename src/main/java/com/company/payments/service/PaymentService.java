@@ -4,6 +4,6 @@ import com.company.payments.dto.PaymentDTO;
 
 public interface PaymentService {
 
-    public PaymentDTO create(PaymentDTO paymentDTO);
+    public String create(PaymentDTO paymentDTO);
     public PaymentDTO findById(long id);
 }

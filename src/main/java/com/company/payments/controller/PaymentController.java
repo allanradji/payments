@@ -33,9 +33,10 @@ public class PaymentController {
     }
     
     @PostMapping
-    public ResponseEntity<PaymentDTO> create(@Valid @RequestBody PaymentDTO paymentDTO) {
-    	PaymentDTO paymentResponse = paymentService.create(paymentDTO);
-    	return ResponseEntity.status(HttpStatus.CREATED).body(paymentResponse);
+    @ResponseStatus(HttpStatus.CREATED)
+    public String create(@Valid @RequestBody PaymentDTO paymentDTO) {
+    	String paymentResponse = paymentService.create(paymentDTO);
+    	return paymentResponse;
     }
     
 }

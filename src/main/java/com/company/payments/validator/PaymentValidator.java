@@ -16,9 +16,7 @@ public class PaymentValidator {
 	private static final int MIN_LIMIT_TO_PAYMENT = 0;
 	private static final int MAX_LIMIT_TO_PAYMENT = 999999999;
 	
-	BuyerValidator buyerValidator;
-	
-	public void validateCreditPayment(Payment payment) {
+	public void validatePayment(Payment payment) {
 		validateAmountPayment(payment);
 		validateMethodPaymentCreditCard(payment);
 		validateMethodPaymentBoleto(payment);

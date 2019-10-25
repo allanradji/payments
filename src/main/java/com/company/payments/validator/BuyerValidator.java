@@ -15,7 +15,7 @@ public class BuyerValidator {
 	private final String EMAIL_PATTERN = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
 	private final String NAME_PATTERN = "[A-Z]+";
 
-	public void validateCreditCard(Buyer buyer) {
+	public void validateBuyer(Buyer buyer) {
 		validateNameBuyer(buyer);
 		validateEmailBuyer(buyer);
 	}

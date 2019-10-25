@@ -1,7 +1,5 @@
 package com.company.payments.service;
 
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

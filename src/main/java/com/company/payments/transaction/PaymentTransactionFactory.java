@@ -8,8 +8,14 @@ public class PaymentTransactionFactory {
 		PaymentTransaction paymentTransaction = null;
 		
 		switch (paymentType) {
-			case CREDIT_CARD: paymentTransaction = new CreditCardTransaction();
-			case BOLETO: paymentTransaction = new BoletoTransaction();
+			case CREDIT_CARD:
+				paymentTransaction = new CreditCardTransaction();
+				break;
+			case BOLETO:
+				paymentTransaction = new BoletoTransaction();
+				break;
+			default:
+				throw new IllegalArgumentException();
 		}
 		
 		return paymentTransaction;

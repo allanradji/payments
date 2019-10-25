@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 public class BuyerValidator {
 	
 	private final String EMAIL_PATTERN = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-	private final String NAME_PATTERN = "[A-Z]+";
+	private final String NAME_PATTERN = "[A-Z]+([ '-][a-zA-Z]+)*";
 
 	public void validateBuyer(Buyer buyer) {
 		validateNameBuyer(buyer);
@@ -21,12 +21,12 @@ public class BuyerValidator {
 	}
 
 	public void validateEmailBuyer(Buyer buyer) {
-		if(!buyer.getEmail().matches(EMAIL_PATTERN))
+		if(!buyer.getEmail().toUpperCase().matches(EMAIL_PATTERN))
 			throw new ResourceException(HttpStatus.NOT_ACCEPTABLE, "buyer.email.invalid");
 	}
 
 	public void validateNameBuyer(Buyer buyer) {
-		if(!buyer.getName().matches(NAME_PATTERN))
+		if(!buyer.getName().toUpperCase().matches(NAME_PATTERN))
 			throw new ResourceException(HttpStatus.NOT_ACCEPTABLE, "buyer.name.invalid");
 	}
 

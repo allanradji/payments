@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CardValidator {
 	
-	private final String NAME_PATTERN = "[A-Z]*";
+	private final String NAME_PATTERN = "[A-Z]+([ '-][a-zA-Z]+)*";
 	private final String CVV_PATTERN = "[0-9]+";
 	private final int FIRST_DAY_OF_A_MONTH = 1;
 	

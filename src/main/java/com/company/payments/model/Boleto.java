@@ -30,7 +30,6 @@ public class Boleto implements Serializable{
 	@Column(name="boleto_id")
 	private Long id;
 	
-	@NotEmpty
 	private String number;
 
 }

@@ -2,7 +2,6 @@ package com.company.payments.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PaymentController {
 
-	@Autowired
     private final PaymentService paymentService;
 
     @GetMapping("/{id}")

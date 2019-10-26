@@ -3,8 +3,7 @@ Simple API to payments with few endpoints to payments
 
 ## How to Run
   
-  In case of all failure, clone the project https://github.com/allanradji/payments.git to your project directory, then import it
-  as maven project using the STS4 IDE https://spring.io/tools after run as spring boot aplication.
+  In case of all options to run failure, clone the project ```https://github.com/allanradji/payments.git``` to your project directory, then import as maven project using the STS4 IDE ```https://spring.io/tools``` so run the project as ```spring boot aplication```.
   
 ## Operations
 
@@ -88,7 +87,7 @@ The collection with some examples to import into your Postman can be downloaded 
 
 ## Design Adopted
 
-### Payment Factory
+### Factory
 The payment transaction is a factory pattern to instanciate a method of payment and return a payment checked through validators.
 
 ### Validator

@@ -2,8 +2,20 @@
 Simple API to payments with few endpoints to payments
 
 ## How to Run
-  
-  In case of all options to run failure, clone the project ```https://github.com/allanradji/payments.git``` to your project directory, then import as maven project using the STS4 IDE ```https://spring.io/tools``` so run the project as ```spring boot aplication```.
+
+clone the project ```https://github.com/allanradji/payments.git``` then in the folder of project execute ```cd payments``` then run the command ```mvn install``` and after that run ```mvn spring-boot:run```.
+
+if someone of these commands ```mvn install``` and ```mvn spring-boot:run``` doesn't work don't be scared just run again. And even so doesn't work these links may help you:
+
+```
+-http://www.appsdeveloperblog.com/run-spring-boot-app-from-a-command-line
+-https://www.mkyong.com/maven/how-to-install-maven-in-windows
+-https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html
+```
+
+In case of all options to run failure import as maven project using the STS4 IDE ```https://spring.io/tools``` so run the project as ```spring boot aplication```.
+
+**p.s. the database created by springboot is testdb in h2 console ```http://localhost:8080/h2-console``` change JDBC URL to ```jdbc:h2:mem:testdb``` **
   
 ## Operations
 
